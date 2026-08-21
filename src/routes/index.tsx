@@ -1,8 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Linkedin } from "lucide-react";
 import profileAsset from "@/assets/thabang-profile.png.asset.json";
 import cvAsset from "@/assets/cv.pdf.asset.json";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const GITHUB = "https://github.com/ThabangRantoka";
+const LINKEDIN = "https://www.linkedin.com/in/moyahabo-thabang-rantoka-95a036275";
 const EMAIL = "thabangrantoka@gmail.com";
 const PHONE = "076 364 9536";
 

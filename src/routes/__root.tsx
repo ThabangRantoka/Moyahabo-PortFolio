@@ -12,6 +12,19 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+const THEME_SCRIPT = `
+  (function () {
+    try {
+      const theme = localStorage.getItem('thabang-theme');
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (_) {}
+  })();
+`;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -77,14 +90,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Moyahabo Thabang Rantoka — AI & Software Developer" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Moyahabo Thabang Rantoka, Computer Systems Engineering student in Pretoria building AI, automation, embedded and web systems.",
+      },
+      { name: "author", content: "Moyahabo Thabang Rantoka" },
+      {
+        property: "og:title",
+        content: "Moyahabo Thabang Rantoka — AI & Software Developer",
+      },
+      {
+        property: "og:description",
+        content:
+          "AI, automation and software projects by Moyahabo Thabang Rantoka.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@ThabangRantoka" },
     ],
     links: [
       {
@@ -108,9 +132,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
         {children}
