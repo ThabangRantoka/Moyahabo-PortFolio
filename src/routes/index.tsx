@@ -149,13 +149,25 @@ function Index() {
               </li>
             ))}
           </ul>
-          <a
-            href={cvAsset.url}
-            download
-            className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Download CV
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="LinkedIn"
+              className="rounded-full border border-border p-2.5 text-foreground transition-colors hover:bg-accent"
+            >
+              <Linkedin size={18} />
+            </a>
+            <ThemeToggle />
+            <a
+              href={cvAsset.url}
+              download
+              className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              Download CV
+            </a>
+          </div>
         </nav>
       </header>
 
@@ -354,9 +366,10 @@ function Index() {
               Open to internships and graduate roles in AI, software development and automation.
               The fastest way to reach me is email.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <ContactItem label="Email" value={EMAIL} href={`mailto:${EMAIL}`} />
               <ContactItem label="Phone" value={PHONE} href="tel:+27763649536" />
+              <ContactItem label="LinkedIn" value="Moyahabo Thabang Rantoka" href={LINKEDIN} external />
               <ContactItem label="GitHub" value="ThabangRantoka" href={GITHUB} external />
             </div>
             <a
